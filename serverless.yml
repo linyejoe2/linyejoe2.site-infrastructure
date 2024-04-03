@@ -1,0 +1,41 @@
+service: api-proxy
+frameworkVersion: "3"
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: ap-northeast-2
+  profile: developer
+  httpApi:
+    id: 7ssdg7r3x8
+
+functions:
+  proxy:
+    handler: lambda/apiProxy.handler
+    events:
+      - httpApi:
+          path: /proxy
+          method: any
+          # cors:
+          #   allowedOrigins:
+          #     - https://linyejoe2.site
+          #     - https://*.linyejoe2.site
+          #   allowedHeaders:
+          #     - Content-Type
+          #     - Authorization
+          #     - X-Amz-Date
+          #     - X-Api-Key
+          #     - X-Amz-Security-Token
+          #     - Notion-Version
+          #   allowedMethods:
+          #     - GET
+          #     - POST
+          #   allowCredentials: true
+          #   maxAge: 6000 # In seconds
+      - httpApi:
+          path: /proxy2
+          method: post

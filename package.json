@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "axios": "^1.6.8",
+    "https": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.134",
+    "@types/node": "^20.11.20",
+    "serverless-offline": "^13.3.3",
+    "serverless-plugin-typescript": "^2.1.5",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "check": "terraform plan",
+    "deploy-tf": "terraform apply",
+    "deploy-sls": "serverless deploy",
+    "deploy": "terraform apply && serverless deploy"
+  }
+}
